@@ -43,6 +43,6 @@
 # Copyright 2018 Your name here, unless otherwise noted.
 #
 class ssh {
-
-
+  class { 'ssh::install': } ->
+  class { 'ssh::service': }
 }
