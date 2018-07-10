@@ -1,0 +1,18 @@
+{
+  "name": "wells-ssh",
+  "version": "0.1.0",
+  "author": "wells training",
+  "summary": "module to manage ssh",
+  "license": "Apache-2.0",
+  "source": "github",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "data_provider": null
+}
+
