@@ -1,4 +1,3 @@
-# Class: ssh
 # ===========================
 #
 # Full description of class ssh here.
@@ -40,9 +39,24 @@
 # Copyright
 # ---------
 #
-# Copyright 2018 Your name here, unless otherwise noted.
+# Copyright 2017 Your name here, unless otherwise noted.
 #
-class ssh {
-  class { 'ssh::install': } ->
-  class { 'ssh::service': }
+class ssh(
+  $package_name      = $::ssh::params::package_name,
+  $service_name      = $::ssh::params::service_name,
+  $service_ensure    = $::ssh::params::service_ensure,
+  $ensure            = $::ssh::params::ensure,
+  $service_enable    = $::ssh::params::service_enable,
+  $permit_root_login = $::ssh::params::permit_root_login,
+  $port              = $::ssh::params::port,
+) inherits ::ssh::params {
+  class { '::ssh::service': }
+  class { '::ssh::config': }
+  class { '::ssh::install': }
+
+  Class['::ssh::install']
+  -> Class['::ssh::config']
+  ~> Class['::ssh::service']
+  -> Class['ssh']
 }
+
